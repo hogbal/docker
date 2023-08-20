@@ -1,0 +1,2 @@
+source ~/tools/gdb/gef/gef.py
+#source ~/tools/gdb/pwndbg/gdbinit.py
