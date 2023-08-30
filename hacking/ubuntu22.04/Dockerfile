@@ -61,7 +61,8 @@ RUN ./bootstrap.sh && \
 #install ropr
 #WORKDIR /root/tools
 #RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -y | sh
-#RUN cargo install ropr
+#RUN echo 'source "$HOME/.cargo/env"' > /root/.zshrc
+#RUN /root/.cargo/bin/cargo install ropr
 
 #set gdb
 COPY gdbinit /root/.gdbinit
