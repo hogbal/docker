@@ -1,0 +1,13 @@
+define init-pwndbg
+source ~/.gdbinit_pwndbg
+end
+document init-pwndbg
+Initializes PwnDBG
+end
+
+define init-gef
+source ~/.gdbinit_gef
+end
+document init-gef
+Initializes GEF (GDB Enhanced Features)
+end
