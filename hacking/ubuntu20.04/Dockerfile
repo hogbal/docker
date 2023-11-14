@@ -58,21 +58,9 @@ RUN ./bootstrap.sh && \
 	make check && \
 	make install
 
-#install ropr
-#WORKDIR /root/tools
-#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -y | sh
-#RUN cargo install ropr
-
 #set gdb
 COPY gdbinit /root/.gdbinit
 RUN mkdir /root/tools/gdb
-
-#install pwndbg
-WORKDIR /root/tools/gdb
-RUN git clone https://github.com/pwndbg/pwndbg
-WORKDIR pwndbg
-RUN ./setup.sh
-RUN echo "source /root/tools/gdb/pwndbg/gdbinit.py" > /root/.gdbinit_pwndbg
 
 #install gef
 WORKDIR /root/tools/gdb
@@ -81,10 +69,6 @@ RUN echo "source /root/tools/gdb/gef/gef.py" > /root/.gdbinit_gef
 
 RUN echo "export LC_ALL=en_US.UTF-8" >> /root/.zshrc
 RUN echo "export PYTHONIOENCODING=UTF-8" >> /root/.zshrc
-
-RUN echo '#!/bin/sh\nexec gdb -q -ex init-pwndbg "$@"' > /usr/bin/gdb-pwndbg
-RUN echo '#!/bin/sh\nexec gdb -q -ex init-gef "$@"' > /usr/bin/gdb-gef
-RUN chmod +x /usr/bin/gdb-*
 
 WORKDIR /root
 
