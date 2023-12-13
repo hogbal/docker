@@ -15,3 +15,13 @@ Please refer to the link below for the docker image that has already been built.
 ```
 docker run -it --rm --cap-add SYS_PTRACE --security-opt seccomp:unconfined -v <local_path>:<docker_path> <docker image>
 ```
+
+# Installed
+
+- gef
+- [oh-my-zsh](https://github.com/hogbal/hogbal.zsh-theme)
+- vim
+- pwntools
+- one_gadget
+- checksec
+- patchelf
