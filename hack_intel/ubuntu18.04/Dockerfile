@@ -34,6 +34,10 @@ RUN sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/maste
 	git clone https://github.com/zsh-users/zsh-autosuggestions  /root/.oh-my-zsh/custom/plugins/zsh-autosuggestions && \
 	sed -i 's/plugins=(git)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions)/' /root/.zshrc
 RUN chsh -s /usr/bin/zsh | echo 'root'
+RUN git clone https://github.com/hogbal/hogbal.zsh-theme.git
+RUN cp /root/tools/hogbal.zsh-theme/hogbal.zsh-theme /root/.oh-my-zsh/themes/hogbal.zsh-theme
+RUN sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="hogbal"/' /root/.zshrc
+ENV DOCKER_HOST=ubuntu18.04
 
 #install pwntools
 WORKDIR /root

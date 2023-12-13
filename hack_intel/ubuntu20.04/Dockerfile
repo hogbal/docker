@@ -11,6 +11,11 @@ RUN apt-get update -y && \
 	pip3 install ropgadget && \
 	update-locale
 
+# x86
+RUN dpkg --add-architecture i386 && \
+	apt-get update && \
+	apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 -y
+
 WORKDIR /root
 RUN mkdir /root/tools
 
@@ -30,6 +35,10 @@ RUN sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/maste
 	git clone https://github.com/zsh-users/zsh-autosuggestions  /root/.oh-my-zsh/custom/plugins/zsh-autosuggestions && \
 	sed -i 's/plugins=(git)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions)/' /root/.zshrc
 RUN chsh -s /usr/bin/zsh | echo 'root'
+RUN git clone https://github.com/hogbal/hogbal.zsh-theme.git
+RUN cp /root/tools/hogbal.zsh-theme/hogbal.zsh-theme /root/.oh-my-zsh/themes/hogbal.zsh-theme
+RUN sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="hogbal"/' /root/.zshrc
+ENV DOCKER_HOST=ubuntu20.04
 
 #install pwntools
 WORKDIR /root
