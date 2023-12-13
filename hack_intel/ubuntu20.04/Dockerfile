@@ -38,7 +38,7 @@ RUN chsh -s /usr/bin/zsh | echo 'root'
 RUN git clone https://github.com/hogbal/hogbal.zsh-theme.git
 RUN cp /root/tools/hogbal.zsh-theme/hogbal.zsh-theme /root/.oh-my-zsh/themes/hogbal.zsh-theme
 RUN sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="hogbal"/' /root/.zshrc
-ENV DOCKER_HOST=ubuntu20.04
+ENV REMOTE_HOST="x86_64 ubuntu20.04"
 
 #install pwntools
 WORKDIR /root
