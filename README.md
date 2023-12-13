@@ -1,9 +1,9 @@
 # docker
-Dockerfile for solving CTF Pwnable problems.  
+A repository with Dockerfile installed to help solve CTF pwnable problems and binwalk to help extract firmware.
 
-I made it exclusively for `arm64` architecture and `x86_64` architecture. 
+The `firmware` folder has Dockerfile for extracting firmware. 
 
-The intel architecture has installed a package that can also decode 32-bit binaries.
+And the `hack_intel` and `hack_amd` folders have Dockerfile that operates on the "x86_64" architecture and the "Amd64" architecture, respectively.
 
 Please refer to the link below for the docker image that has already been built.
 
@@ -17,6 +17,7 @@ docker run -it --rm --cap-add SYS_PTRACE --security-opt seccomp:unconfined -v <l
 ```
 
 # Installed
+The tools installed in the hack_intel and hack_amd folders are as follows.
 
 - gef
 - [oh-my-zsh](https://github.com/hogbal/hogbal.zsh-theme)
