@@ -63,4 +63,10 @@ RUN echo "export PYTHONIOENCODING=UTF-8" >> /root/.zshrc
 
 WORKDIR /root
 
-CMD ["/usr/bin/zsh"]
+#setting ssh
+EXPOSE 22
+RUN mkdir -p /run/sshd && chmod 755 /run/sshd
+RUN echo 'root:root' | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN echo 'export REMOTE_HOST="arm64 ubuntu18.04"' >> /root/.zshrc
+CMD /usr/sbin/sshd -D
