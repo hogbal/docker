@@ -80,5 +80,5 @@ EXPOSE 22
 RUN mkdir -p /run/sshd && chmod 755 /run/sshd
 RUN echo 'root:root' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN echo 'export REMOTE_HOST="arm64 ubuntu18.04"' >> /root/.zshrc
+RUN echo 'export REMOTE_HOST="arm64 ubuntu20.04"' >> /root/.zshrc
 CMD /usr/sbin/sshd -D
