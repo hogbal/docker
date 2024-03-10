@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 MAINTAINER hogbal31@gmail.com
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -34,7 +34,7 @@ EXPOSE 22
 RUN mkdir -p /run/sshd && chmod 755 /run/sshd
 RUN echo 'root:root' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN echo 'export REMOTE_HOST="kernel18.04"' >> /root/.zshrc
+RUN echo 'export REMOTE_HOST="kernel22.04"' >> /root/.zshrc
 RUN git config --global oh-my-zsh.hide-status 1
 RUN git config --global oh-my-zsh.hide-dirty 1
 

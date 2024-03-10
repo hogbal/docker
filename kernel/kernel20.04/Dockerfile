@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 MAINTAINER hogbal31@gmail.com
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -27,6 +27,7 @@ RUN chsh -s /usr/bin/zsh | echo 'root'
 RUN git clone https://github.com/hogbal/hogbal.zsh-theme.git
 RUN cp /root/tools/hogbal.zsh-theme/hogbal.zsh-theme /root/.oh-my-zsh/themes/hogbal.zsh-theme
 RUN sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="hogbal"/' /root/.zshrc
+ENV REMOTE_HOST="kernel20.04"
 WORKDIR /root
 
 #setting ssh
@@ -34,7 +35,7 @@ EXPOSE 22
 RUN mkdir -p /run/sshd && chmod 755 /run/sshd
 RUN echo 'root:root' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN echo 'export REMOTE_HOST="kernel18.04"' >> /root/.zshrc
+RUN echo 'export REMOTE_HOST="kernel20.04"' >> /root/.zshrc
 RUN git config --global oh-my-zsh.hide-status 1
 RUN git config --global oh-my-zsh.hide-dirty 1
 
